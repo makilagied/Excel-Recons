@@ -1,0 +1,26 @@
+[Unit]
+Description=Excel Reconciliation Tool - Streamlit Web Application
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+Group=%i
+WorkingDirectory=/opt/excel-recons
+Environment="PATH=/opt/excel-recons/venv/bin"
+ExecStart=/opt/excel-recons/run_app.sh
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/excel-recons
+
+[Install]
+WantedBy=multi-user.target
+
